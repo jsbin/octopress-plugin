@@ -17,14 +17,13 @@
 # Input: {% jsbin exedab javascript,html %}
 # Output: <a class="jsbin-embed" href="http://jsbin.com/exedab/1/embed?javascript,html">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 #
-
 module Jekyll
-  class jsbin < Liquid::Tag
+  class JSbin < Liquid::Tag
     def initialize(tag_name, markup, tokens)
       if /(?<jsbin>\w+\/?\d?)(?:\s+(?<sequence>[\w,]+))?(?:\s+(?<width>\w+))?/ =~ markup
-        @bin   = bin
+        @bin = jsbin
         @sequence = (sequence unless sequence == 'all') || 'html,css,javascript,live'
-        # @width    = width || '100%'
+        # @width = width || '100%'
       end
     end
 
@@ -38,4 +37,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('jsbin', Jekyll::jsbin)
+Liquid::Template.register_tag('JSbin', Jekyll::JSbin)

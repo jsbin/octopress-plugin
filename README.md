@@ -36,3 +36,8 @@ Output:
 ```html
 <a class="jsbin-embed" href="http://jsbin.com/exedab/1/embed?javascript,html">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 ```
+
+### Contributors
+
+* [hemanth](https://github.com/hemanth)
+* [remy](https://github.com/remy)

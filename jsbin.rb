@@ -7,31 +7,32 @@
 #
 # Panels: html, javascript, css, console, live (default)
 #
-# Syntax: {% jsbin bin [panels] %}
+# Syntax: {% JSbin bin [panels] [height] [width] %}
 #
 # Examples:
 #
-# Input: {% jsbin exedab %}
+# Input: {% JSbin exedab %}
 # Output: <a class="jsbin-embed" href="http://jsbin.com/exedab/1/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 #
-# Input: {% jsbin exedab javascript,html %}
+# Input: {% JSbin exedab javascript,html %}
 # Output: <a class="jsbin-embed" href="http://jsbin.com/exedab/1/embed?javascript,html">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 #
 module Jekyll
   class JSbin < Liquid::Tag
     def initialize(tag_name, markup, tokens)
-      if /(?<jsbin>\S+\/?\d?)(?:\s+(?<sequence>[\w,]+))?(?:\s+(?<width>\w+))?/ =~ markup
+      if /(?<jsbin>\S+\/?\d?)(?:\s+(?<sequence>[\w,]+))?(?:\s+(?<width>\w+))?(?:\s+(?<height>\w+))?/ =~ markup
         @bin = jsbin
         @sequence = (sequence unless sequence == 'all') || 'html,css,javascript,live'
-        # @width = width || '100%'
+        @width = width + '%' || '100%'
+        @height = height + 'px' || '300px'
       end
     end
 
     def render(context)
       if @bin
-        "<a class=\"jsbin-embed\" href=\"http://jsbin.com/#{@bin}/embed?#{@sequence}\">JS Bin</a><script src=\"http://static.jsbin.com/js/embed.js\"></script>"
+        "<a class=\"jsbin-embed\" href=\"http://jsbin.com/#{@bin}/embed?#{@sequence}&amp;width=#{@width}&amp;height=#{@height}\">JS Bin</a><script src=\"http://static.jsbin.com/js/embed.js\"></script>"
       else
-        "Error processing input, expected syntax: {% jsbin bin [panels] %}"
+        "Error processing input, expected syntax: {% JSbin bin [panels] %}"
       end
     end
   end

@@ -3,12 +3,14 @@ jsbin octopress plugin
 
 Given a bin url, generates the embed code for jsbin with defined panels.  A bin url is either just the code: `abcefg` or you can include the revision `abcefg/4` or you can point to latest: `abcefg/latest`
 
-Panels: html, javascript, css, console, live (default)
+* panels: html, javascript, css, console, live (default)
+* width: defaults to 100% (can be in px too)
+* height: defaults to 300px
 
 ## Syntax
 
 ```ruby
-{% jsbin bin [panels] %}
+{% jsbin bin [panels] [width] [height] %}
 ```
 
 ## Examples:

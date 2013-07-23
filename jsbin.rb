@@ -29,7 +29,7 @@ module Jekyll
 
     def render(context)
       if @bin
-        "<a class=\"jsbin-embed\" src=\"http://jsbin.com/#{@bin}/embed?#{@sequence}\">JS Bin</a><script src=\"http://static.jsbin.com/js/embed.js\"></script>"
+        "<a class=\"jsbin-embed\" href=\"http://jsbin.com/#{@bin}/embed?#{@sequence}\">JS Bin</a><script src=\"http://static.jsbin.com/js/embed.js\"></script>"
       else
         "Error processing input, expected syntax: {% jsbin bin [panels] %}"
       end

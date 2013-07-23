@@ -23,7 +23,7 @@ module Jekyll
     def initialize(tag_name, markup, tokens)
       if /(?<jsbin>\w+\/?\d?)(?:\s+(?<sequence>[\w,]+))?(?:\s+(?<width>\w+))?/ =~ markup
         @bin   = bin
-        @sequence = (sequence unless sequence == 'all') || 'live'
+        @sequence = (sequence unless sequence == 'all') || 'html,css,javascript,live'
         # @width    = width || '100%'
       end
     end

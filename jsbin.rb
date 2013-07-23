@@ -20,7 +20,7 @@
 module Jekyll
   class JSbin < Liquid::Tag
     def initialize(tag_name, markup, tokens)
-      if /(?<jsbin>\w+\/?\d?)(?:\s+(?<sequence>[\w,]+))?(?:\s+(?<width>\w+))?/ =~ markup
+      if /(?<jsbin>\S+\/?\d?)(?:\s+(?<sequence>[\w,]+))?(?:\s+(?<width>\w+))?/ =~ markup
         @bin = jsbin
         @sequence = (sequence unless sequence == 'all') || 'html,css,javascript,live'
         # @width = width || '100%'

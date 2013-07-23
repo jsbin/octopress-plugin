@@ -8,7 +8,7 @@ Panels: html, javascript, css, console, live (default)
 ## Syntax
 
 ```ruby
-{% jsbin bin [panels] [width] %}
+{% jsbin bin [panels] %}
 ```
 
 ## Examples:

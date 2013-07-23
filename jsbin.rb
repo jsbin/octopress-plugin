@@ -7,7 +7,7 @@
 #
 # Panels: html, javascript, css, console, live (default)
 #
-# Syntax: {% jsbin bin [panels] [width] %}
+# Syntax: {% jsbin bin [panels] %}
 #
 # Examples:
 #

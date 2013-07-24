@@ -10,7 +10,7 @@ Given a bin url, generates the embed code for jsbin with defined panels.  A bin 
 ## Syntax
 
 ```ruby
-{% JSbin bin [panels] [width] [height] %}
+{% jsbin bin [panels] [width] [height] %}
 ```
 
 ## Examples:
@@ -18,7 +18,7 @@ Given a bin url, generates the embed code for jsbin with defined panels.  A bin 
 Input: 
 
 ```ruby
-{% JSbin exedab %}
+{% jsbin exedab %}
 ```
 
 Output: 
@@ -30,7 +30,7 @@ Output:
 Input: 
 
 ```ruby
-{% JSbin exedab javascript,html %}
+{% jsbin exedab javascript,html %}
 ```
 
 Output: 

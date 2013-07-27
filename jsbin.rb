@@ -23,8 +23,8 @@ module Jekyll
       if /(?<jsbin>\S+\/?\d?)(?:\s+(?<sequence>[\w,]+))?(?:\s+(?<width>\w+))?(?:\s+(?<height>\w+))?/ =~ markup
         @bin = jsbin
         @sequence = (sequence unless sequence == 'all') || 'html,css,javascript,live'
-        @width = (width + '%' unless width.nil?) || '100%'
-        @height = (height + 'px' unless height.nil?) || '300px'
+        @width  = width || '100%'
+        @height = height || '300px'
       end
     end
 

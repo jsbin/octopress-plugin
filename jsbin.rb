@@ -7,7 +7,7 @@
 #
 # Panels: html, javascript, css, console, live (default)
 #
-# Syntax: {% jsbin bin [panels] %}
+# Syntax: {% jsbin bin [panels] [height] [width] %}
 #
 # Examples:
 #
@@ -18,7 +18,7 @@
 # Output: <a class="jsbin-embed" href="http://jsbin.com/exedab/1/embed?javascript,html">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 #
 module Jekyll
-  class JSbin < Liquid::Tag
+  class JSBin < Liquid::Tag
     def initialize(tag_name, markup, tokens)
       if /(?<jsbin>\S+\/?\d?)(?:\s+(?<sequence>[\w,]+))?(?:\s+(?<width>\w+))?(?:\s+(?<height>\w+))?/ =~ markup
         @bin = jsbin
@@ -30,7 +30,10 @@ module Jekyll
 
     def render(context)
       if @bin
-        "<a class=\"jsbin-embed\" href=\"http://jsbin.com/#{@bin}/embed?#{@sequence}&amp;width=#{@width}&amp;height=#{@height}\">JS Bin</a><script src=\"http://static.jsbin.com/js/embed.js\"></script>"
+<<HTML
+<a class="jsbin-embed" href="http://jsbin.com/#{@bin}/embed?#{@sequence}&amp;width=#{@width}&amp;height=#{@height}">JS Bin</a>
+<script src="http://static.jsbin.com/js/embed.js"></script> 
+HTML
       else
         "Error processing input, expected syntax: {% jsbin bin [panels] %}"
       end
@@ -38,4 +41,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('JSbin', Jekyll::JSbin)
+Liquid::Template.register_tag('jsbin', Jekyll::JSBin)

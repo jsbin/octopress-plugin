@@ -5,9 +5,9 @@
 #   A bin url is either just the code: `abcefg` or you can include the revision
 #   `abcefg/4` or you can point to latest: `abcefg/latest`
 #
-# Panels: html, js, css, console, output (default)
+# Panels: html, js, css, console, output (default: html,css,js,output)
 #
-# Syntax: {% jsbin bin revision %}
+# Syntax: {% jsbin bin %}
 #
 # Examples:
 #
@@ -20,9 +20,9 @@
 module Jekyll
   class JSBin < Liquid::Tag
     def initialize(tag_name, markup, tokens)
-      if /(?<jsbin>\S+\/?\d?)(?:\s+(?<sequence>[\w,]+))?(?:\s+(?<revision>\d+))?/ =~ markup
+      if /(?<jsbin>[^\s\/]+)(\/(?<revision>\d))?(?:\s+(?<sequence>[\w,]+))?/ =~ markup
         @bin = jsbin
-        @revision = revision || 1
+        @revision = revision || 'latest'
         @sequence = (sequence unless sequence == 'all') || 'html,css,js,output'
       end
     end
